@@ -1,0 +1,2 @@
+# AutoCompleteJS
+Coding exercise to create a reusable autocomplete component using JavaScript. This component will consume a remote web service that provides a list of Places. Each Place is comprised of an ID, name, description, tags, and a description match field which gives information about the substring in the description that matches the provided query. Upon selecting a suggestion, the state of the component should be updated to reflect the selected location.
