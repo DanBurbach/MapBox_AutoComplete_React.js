@@ -7,14 +7,15 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      location: ''
+      location: '',
+      list: []
     };
     this.handleChange = this.handleChange.bind(this);
   }
 
   // async componentDidMount() {
   //     const res = await fetch(
-  //       "https://coding-challenge.echoandapex.com/locations?q={event.target.value}"
+  //     `https://coding-challenge.echoandapex.com/locations?q=${this.state.location}`
   //     );
   //     const json = await res.json();
   //     const predictionsList = new DocumentFragment();
@@ -23,13 +24,17 @@ class Main extends Component {
   //       item.innerHTML = prediction.name;
   //       predictionsList.appendChild(item);
   //     });
-  //     document.body.appendChild(predictionsList);
+  //     this.setState({list: document.body.appendChild(predictionsList)});
   //   };
 
   handleChange(event) {
     this.setState({location: event.target.value});
-    console.log(this.state.location);
+    console.log(this.state.list);
   };
+
+  updateChosenLocation() {
+    this.props.onChange(this.state);
+  }
 
 
   render() {
@@ -40,6 +45,7 @@ class Main extends Component {
           <form autoComplete="off">
             <div className="autocomplete">
               <EnterCity
+                value=''
                 recommendations={[
                   // current recommendations that need to be replaced with the users chosen item based off list choice
                   "Alligator",
