@@ -1,3 +1,9 @@
+.formMain {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
 .autocomplete {
     position: relative;
     display: inline-block;
