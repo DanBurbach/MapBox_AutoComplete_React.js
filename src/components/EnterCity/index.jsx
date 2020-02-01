@@ -3,15 +3,20 @@ import PropTypes from "prop-types";
 
 class EnterCity extends Component {
   static propTypes = {
-    suggestions: PropTypes.instanceOf(Array)
+    recommendations: PropTypes.instanceOf(Array)
   };
   static defaultProps = {
-    suggestions: []
+    recommendations: []
   };
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      activeSuggestion: 0,
+      filteredSuggestions: [],
+      showSuggestions: false,
+      userInput: ""
+    };
   }
 
   onChange = event => {
@@ -65,6 +70,45 @@ class EnterCity extends Component {
   };
 
   render () {
+    let suggestionList;
+    const { onChange, onClick, onKeyDown, state: {
+        activeSuggestion,
+        filteredSuggestions,
+        showSuggestions,
+        userInput
+      }
+    } = this;
+
+    if (showSuggestions && userInput) {
+      if (filteredSuggestions.length) {
+        suggestionList = (
+          <ul className="suggestions">
+            {filteredSuggestions.map((suggestion, index) => {
+            let className;
+
+            if (index === activeSuggestion) {
+              className = "suggestion-active";
+            }
+            return(
+                <li
+                  className={className} 
+                  key={suggestion} 
+                  onClick={onClick}>
+                    {suggestion}
+                </li>
+            );
+            })}
+          </ul>
+        );
+      } else {
+        suggestionList = (
+          <div className="no-suggestions">
+            <em>We don't have any suggestions, give it another try!</em>
+          </div>
+        );
+      }
+    }
+
     return (
       <div>
         <Fragment>
@@ -73,12 +117,13 @@ class EnterCity extends Component {
             onChange={onChange}
             onKeyDown={onKeyDown}
             value={userInput}
+            placeholder="Enter A Location"
           />
+          {suggestionList}
         </Fragment>
       </div>
     );
   }
-
 }
 
 export default EnterCity;
