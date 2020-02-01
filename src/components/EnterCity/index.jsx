@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 
+import '../../styles/EnterCity.css'
+
 class EnterCity extends Component {
   static propTypes = {
     recommendations: PropTypes.instanceOf(Array)
@@ -17,16 +19,23 @@ class EnterCity extends Component {
       showSuggestions: false,
       userInput: ""
     };
+    this.onChange = this.onChange.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   onChange = event => {
-    const { recommendations } = this.props;
+    const { suggestions } = this.props;
     const userInput = event.currentTarget.value;
 
-    const filteredSuggestions = recommendations.filter(
+    // Filter our suggestions that don't contain the user's input
+    const filteredSuggestions = suggestions.filter(
       suggestion =>
         suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     );
+
+    // Update the user input and filtered suggestions, reset the active
+    // suggestion and make sure the suggestions are shown
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions,
@@ -53,25 +62,27 @@ class EnterCity extends Component {
         showSuggestions: false,
         userInput: filteredSuggestions[activeSuggestion]
       });
-    }
-    else if (event.keyCode === 38) {
+    } else if (event.keyCode === 38) {
       if (activeSuggestion === 0) {
         return;
       }
 
       this.setState({ activeSuggestion: activeSuggestion - 1 });
-    }
-    else if (event.keyCode === 40) {
-      if (activeSuggestion - 1 === filteredSuggestions.length)   {
-          return;
-        }
+    } else if (event.keyCode === 40) {
+      if (activeSuggestion - 1 === filteredSuggestions.length) {
+        return;
+      }
       this.setState({ activeSuggestion: activeSuggestion + 1 });
     }
   };
 
-  render () {
+  render() {
     let suggestionList;
-    const { onChange, onClick, onKeyDown, state: {
+    const {
+      onChange,
+      onClick,
+      onKeyDown,
+      state: {
         activeSuggestion,
         filteredSuggestions,
         showSuggestions,
@@ -84,19 +95,16 @@ class EnterCity extends Component {
         suggestionList = (
           <ul className="suggestions">
             {filteredSuggestions.map((suggestion, index) => {
-            let className;
+              let className;
 
-            if (index === activeSuggestion) {
-              className = "suggestion-active";
-            }
-            return(
-                <li
-                  className={className} 
-                  key={suggestion} 
-                  onClick={onClick}>
-                    {suggestion}
+              if (index === activeSuggestion) {
+                className = "suggestion-active";
+              }
+              return (
+                <li className={className} key={suggestion} onClick={onClick}>
+                  {suggestion}
                 </li>
-            );
+              );
             })}
           </ul>
         );
@@ -127,17 +135,3 @@ class EnterCity extends Component {
 }
 
 export default EnterCity;
-
-//   async () => {
-//     const res = await fetch(
-//       "https://coding-challenge.echoandapex.com/locations?q=pdx"
-//     );
-//     const json = await res.json();
-//     const predictionsList = new DocumentFragment();
-//     json.predictions.forEach(prediction => {
-//       const item = document.createElement("p");
-//       item.innerHTML = prediction.name;
-//       predictionsList.appendChild(item);
-//     });
-//     document.body.appendChild(predictionsList);
-//   };
