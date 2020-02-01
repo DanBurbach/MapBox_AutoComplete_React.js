@@ -1,0 +1,45 @@
+input {
+    border: 1px solid transparent;
+    background-color: #ececec;
+    padding: 10px;
+    font-size: 20px;
+    outline: 0;
+}
+
+input[type=text] {
+    background-color: #ececec;
+    width: 100%;
+}
+
+.no-suggestions {
+    color: #999;
+    padding: 0.5rem;
+}
+
+.suggestions {
+    border: 1px solid rgb(214, 214, 214);
+    border-top-width: 0;
+    list-style: none;
+    margin-top: 0;
+    max-height: 8em;
+    overflow-y: auto;
+    padding-left: 0;
+    width: calc(300px + 1em);
+}
+
+.suggestions li {
+    padding: 0.25rem;
+}
+
+.suggestion-active,
+.suggestions li:hover {
+    background-color: #cacaca;
+    color: #000000;
+    cursor: pointer;
+    font-weight: 700;
+    border: 0;
+}
+
+.suggestions li:not(:last-of-type) {
+    border-bottom: 1px solid rgb(214, 214, 214);
+}
