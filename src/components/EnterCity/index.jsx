@@ -25,17 +25,12 @@ class EnterCity extends Component {
   }
 
   onChange = event => {
-    const { suggestions } = this.props;
+    const { recomendations } = this.props;
     const userInput = event.currentTarget.value;
-
-    // Filter our suggestions that don't contain the user's input
-    const filteredSuggestions = suggestions.filter(
+    const filteredSuggestions = recomendations.filter(
       suggestion =>
         suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     );
-
-    // Update the user input and filtered suggestions, reset the active
-    // suggestion and make sure the suggestions are shown
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions,
@@ -62,15 +57,16 @@ class EnterCity extends Component {
         showSuggestions: false,
         userInput: filteredSuggestions[activeSuggestion]
       });
+      
     } else if (event.keyCode === 38) {
-      if (activeSuggestion === 0) {
-        return;
+        if (activeSuggestion === 0) {
+          return;
       }
-
       this.setState({ activeSuggestion: activeSuggestion - 1 });
+
     } else if (event.keyCode === 40) {
-      if (activeSuggestion - 1 === filteredSuggestions.length) {
-        return;
+        if (activeSuggestion - 1 === filteredSuggestions.length) {
+          return;
       }
       this.setState({ activeSuggestion: activeSuggestion + 1 });
     }
@@ -101,7 +97,10 @@ class EnterCity extends Component {
                 className = "suggestion-active";
               }
               return (
-                <li className={className} key={suggestion} onClick={onClick}>
+                <li 
+                  className={className} 
+                  key={suggestion} 
+                  onClick={onClick}>
                   {suggestion}
                 </li>
               );
