@@ -7,7 +7,6 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: [],
       location: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -29,36 +28,45 @@ class Main extends Component {
 
   handleChange(event) {
     this.setState({location: event.target.value});
+    console.log(this.state.location);
   };
+
 
   render() {
     return (
-      <div className="GlobalWrapper">
+      <div className="MainWrapper">
         <h3>Type a city</h3>
-        <form autoComplete="off">
-          <div className="autocomplete">
-            <EnterCity suggestions={[
-              "Alligator",
-              "Bask",
-              "Crocodilian",
-              "Death Roll",
-              "Eggs",
-              "Jaws",
-              "Reptile",
-              "Solitary",
-              "Tail",
-              "Wetlands"
-            ]}/>
-            {/* <input
-              id="myInput"
-              type="text"
-              name="myCity"
-              placeholder="City"
-              required="required"
-            /> */}
-          </div>
-          <input type="submit" />
-        </form>
+        <div className="FormMain">
+          <form autoComplete="off">
+            <div className="autocomplete">
+              <EnterCity
+                recommendations={[
+                  // current recommendations that need to be replaced with the users chosen item based off list choice
+                  "Alligator",
+                  "Bask",
+                  "Crocodilian",
+                  "Death Roll",
+                  "Eggs",
+                  "Jaws",
+                  "Reptile",
+                  "Solitary",
+                  "Tail",
+                  "Wetlands"
+                ]}
+              />
+              {/* <input
+                id="myInput"
+                type="text"
+                name="myCity"
+                placeholder="City"
+                required="required"
+              /> */}
+            </div>
+            <input type="submit"/>
+          </form>
+        </div>
+        <br/>
+        Your location: {this.state.location}
       </div>
     );
   }
