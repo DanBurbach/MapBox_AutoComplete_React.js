@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-// import EnterCity from '../EnterCity'
 import '../../styles/Main.css';
 import EnterCity from '../EnterCity';
 
@@ -8,19 +7,15 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      results: []
+      results: [],
+      location: ''
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    // EnterCity();
-  }
-
-  // enterCity() {
-  //   console.log("test");
-  //   async () => {
+  // async componentDidMount() {
   //     const res = await fetch(
-  //       "https://coding-challenge.echoandapex.com/locations?q=pdx"
+  //       "https://coding-challenge.echoandapex.com/locations?q={event.target.value}"
   //     );
   //     const json = await res.json();
   //     const predictionsList = new DocumentFragment();
@@ -31,7 +26,10 @@ class Main extends Component {
   //     });
   //     document.body.appendChild(predictionsList);
   //   };
-  // }
+
+  handleChange(event) {
+    this.setState({location: event.target.value});
+  };
 
   render() {
     return (
@@ -39,8 +37,18 @@ class Main extends Component {
         <h3>Type a city</h3>
         <form autoComplete="off">
           <div className="autocomplete">
-            <EnterCity 
-              suggestions={["PDX"]}/>
+            <EnterCity suggestions={[
+              "Alligator",
+              "Bask",
+              "Crocodilian",
+              "Death Roll",
+              "Eggs",
+              "Jaws",
+              "Reptile",
+              "Solitary",
+              "Tail",
+              "Wetlands"
+            ]}/>
             {/* <input
               id="myInput"
               type="text"
@@ -49,9 +57,8 @@ class Main extends Component {
               required="required"
             /> */}
           </div>
-          <input type="submit" onclick={""} />
+          <input type="submit" />
         </form>
-        <div>{this.state.results}</div>
       </div>
     );
   }
