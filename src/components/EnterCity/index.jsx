@@ -1,4 +1,4 @@
-export function enterCity() {
+export default function enterCity() {
   console.log("test");
 
   async () => {
