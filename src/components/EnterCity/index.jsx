@@ -27,73 +27,48 @@ class EnterCity extends Component {
   }
 
   async onChange(event) {
-    event.preventDefault();
-    let userEntry = event.currentTarget.value;
-    
-    // const sourceLibrary = 
-    await fetch(
-      `https://coding-challenge.echoandapex.com/locations?q=${userEntry}`
-      )
-      .then(response => response.json())
-      .then(response => {
-          this.setState({
-            testList: response.predictions.concat([response])
-          })
-      });
+    // let userEntry = event.currentTarget.value;
 
-    let array1 = [this.state.testList[0].name];
-    let array2 = [this.state.testList[1].name];
-    let array3 = [this.state.testList[2].name];
-    let array4 = [this.state.testList[3].name];
-    let array5 = [this.state.testList[4].name];
+    // await fetch(
+    //   `https://coding-challenge.echoandapex.com/locations?q=${userEntry}`
+    //   )
+    //   .then(response => response.json())
+    //   .then(response => {
+    //       this.setState({
+    //         testList: response.predictions.concat([response])
+    //       })
+    //   });
 
-    const combinedResults = [array1, array2, array3, array4, array5];
+    // let array1 = [this.state.testList[0].name];
+    // let array2 = [this.state.testList[1].name];
+    // let array3 = [this.state.testList[2].name];
+    // let array4 = [this.state.testList[3].name];
+    // let array5 = [this.state.testList[4].name];
 
-    const flattenedResults = [].concat(...combinedResults);
+    // const combinedResults = [array1, array2, array3, array4, array5];
+    // const flattenedResults = [].concat(...combinedResults);
+    // this.setState({
+    //     list: flattenedResults
+    // });
 
-    this.setState({
-        list: flattenedResults
-    });
-
-    console.log(this.state.list);
-    
-    // const json = await sourceLibrary.json();
-
-    // let resultList = json.predictions[0].description;
-    
-//     const predictionsList = new DocumentFragment();
-//     console.log(predictionsList);
-    
-//       json.predictions.forEach(prediction => {
-//         const item = document.createElement("p");
-//         console.log(item);
-//         item.innerHTML = prediction.name;
-//         console.log(item.innerHTML);
-//         predictionsList.appendChild(item);
-//         console.log(predictionsList.appendChild(item)
-//         );
-//       });
-//     this.setState({list: document.body.appendChild(predictionsList)}
-//   );
-            
-    const recommendations = this.state.list;
-    console.log(recommendations);
-    const userInput = toString(this.state.testList);
+    const { recommendations } = this.props;
+    // const flatList = (this.state.list);
+    // const recommendations = flatList.toString();
     // const userInput = this.state.list.toString();
-    // const userInput = event.currentTarget.value;    
+    const userInput = event.currentTarget.value;    
     const filteredSuggestions = recommendations.filter(
       suggestion =>
         suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     );
 
-    const targetValue = event.persist.value;
-    // const targetValue = event.currentTarget.value;
+    console.log(recommendations);
+    console.log(this.state.list);
 
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions,
       showSuggestions: true,
-      userInput: targetValue
+      userInput: event.currentTarget.value
     });
   };
 
@@ -175,7 +150,6 @@ class EnterCity extends Component {
     }
 
     return (
-      <div>
         <Fragment>
           <input
             type="text"
@@ -186,7 +160,6 @@ class EnterCity extends Component {
           />
           {suggestionList}
         </Fragment>
-      </div>
     );
   }
 }
