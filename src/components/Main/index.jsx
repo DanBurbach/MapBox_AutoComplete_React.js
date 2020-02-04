@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from "react";
+import MapBox from '../mapboxAndReact';
 
-// import "../../styles/EnterCity.css";
 import '../../styles/Main.css';
-// import EnterCity from '../EnterCity';
 
 class Main extends Component {
   constructor(props) {
@@ -155,13 +154,14 @@ class Main extends Component {
                   placeholder="Enter a location..."
                   recommendations={list}
                   required="yes"
-                />
+                  />
                 {suggestionList}
               </Fragment>
             </div>
             <input type="submit" />
           </form>
         </div>
+        <MapBox/>
       </div>
     );
   }
