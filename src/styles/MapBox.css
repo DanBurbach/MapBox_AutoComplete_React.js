@@ -1,0 +1,22 @@
+.mapContainer {
+    flex-flow: row wrap;
+    display: inline-block;
+    height: 30em;
+    width: 60em;
+    border-radius: 0.25em;
+}
+
+.sidebarStyle {
+    display: inline-block;
+    width: 15em;
+    top: 1em;
+    left: 0;
+    right: 0;
+    margin: 5px;
+    background-color: #49606e;
+    border-radius: 0.25em;
+    color: #ffffff;
+    font-size: 0.75em;
+    z-index: 1 !important;
+    padding: 5px;
+}
