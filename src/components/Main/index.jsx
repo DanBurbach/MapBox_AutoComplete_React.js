@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 
-import "../../styles/EnterCity.css";
+// import "../../styles/EnterCity.css";
 import '../../styles/Main.css';
 // import EnterCity from '../EnterCity';
 
@@ -13,18 +13,18 @@ class Main extends Component {
       showSuggestions: false,
       userInput: "",
       list: [],
-      testList: [],
+      testList: []
     };
     this.onChange = this.onChange.bind(this);
     this.onClick = this.onClick.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleSaveLocation = this.handleSaveLocation.bind(this);
   }
 
   onChange = async event => {
     const userInput = event.currentTarget.value || "";
-    
+
     await fetch(
       `https://coding-challenge.echoandapex.com/locations?q=${userInput}`
     )
@@ -34,11 +34,11 @@ class Main extends Component {
           testList: response.predictions.concat([response])
         });
       });
-    let array1 = [this.state.testList[0].name] || "";
-    let array2 = [this.state.testList[1].name] || "";
-    let array3 = [this.state.testList[2].name] || "";
-    let array4 = [this.state.testList[3].name] || "";
-    let array5 = [this.state.testList[4].name] || "";
+    let array1 = [this.state.testList[0].description] || "";
+    let array2 = [this.state.testList[1].description] || "";
+    let array3 = [this.state.testList[2].description] || "";
+    let array4 = [this.state.testList[3].description] || "";
+    let array5 = [this.state.testList[4].description] || "";
 
     const combinedResults = [array1, array2, array3, array4, array5] || "";
     const flattenedResults = [].concat(...combinedResults) || "";
@@ -60,7 +60,6 @@ class Main extends Component {
       showSuggestions: true,
       userInput: userInput
     });
-    console.log(this.state.userInput);
   };
 
   onClick = event => {
@@ -94,8 +93,9 @@ class Main extends Component {
     }
   };
 
-  handleChange(event) {
-    this.setState({ location: event.currentTarget.value });
+  handleSaveLocation(event) {
+    let userLocation = this.state.userInput;
+    this.setState({ location: userLocation});
   }
 
   render() {
@@ -109,7 +109,7 @@ class Main extends Component {
         filteredSuggestions,
         showSuggestions,
         userInput,
-        list 
+        list
       }
     } = this;
 
@@ -119,7 +119,6 @@ class Main extends Component {
           <ul className="suggestions">
             {filteredSuggestions.map((suggestion, index) => {
               let className;
-
               if (index === activeSuggestion) {
                 className = "suggestion-active";
               }
@@ -148,6 +147,7 @@ class Main extends Component {
             <div className="autocomplete">
               <Fragment>
                 <input
+                  id="autoCompleteEnter"
                   type="text"
                   onChange={onChange}
                   onKeyDown={onKeyDown}
