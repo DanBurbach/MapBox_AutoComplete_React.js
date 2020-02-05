@@ -2,16 +2,28 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
+    z-index: 10;
 }
 
 .autocomplete {
     position: relative;
     display: inline-block;
-    width: 16em;
-    padding: 2em;
+    width: 18em;
+    z-index: 10;
+    left: -3em;
 }
 
-input[type=submit] {
+h3 {
+    padding: 0;
+    color: #fff;
+    text-shadow: 1px 1px 3px #000;
+}
+
+input[type=reset] {
+    padding-left: 2em;
+    padding-right: 2em;
+    position: absolute;
+    display: inline-block;
     background-color: #6BBE92;
     color: #fff;
     cursor: pointer;
@@ -21,11 +33,11 @@ input[type=submit] {
     outline: 0;
 }
 
-input[type=submit]:hover {
+input[type=reset]:hover {
     background-color: rgb(76, 204, 136)
 }
 
-input[type=submit]:active {
+input[type=reset]:active {
     background-color: #6BBE92;
     box-shadow: 1px 1px 5px #000;
     transform: translateY(2px);
@@ -35,8 +47,8 @@ input[type=submit]:active {
 input {
     border: 1px solid transparent;
     background-color: #628194;
-    padding: 10px;
-    font-size: 20px;
+    padding: 0.5em;
+    font-size: 1em;
     outline: 0;
     color: #fff;
 }
@@ -63,14 +75,10 @@ input[type=text] {
     width: 17em;
 }
 
-.suggestions li {
-    padding: 0.25rem;
-}
-
 .suggestion-active,
 .suggestions li:hover {
     background-color: #485f6d;
-    color: #1b2227;
+    color: #ffffff;
     cursor: pointer;
     font-weight: 600;
     border: 0;
@@ -78,7 +86,8 @@ input[type=text] {
 
 .suggestions li {
     border-bottom: 1px solid #628194;
-    color: #1b2227;
+    color: #ffffff;
+    padding: 0.25rem;
 }
 
 #autoCompleteEnter::placeholder {

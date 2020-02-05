@@ -4,16 +4,19 @@
     height: 30em;
     width: 60em;
     border-radius: 0.25em;
+    position: relative;
+    box-shadow: 2px 2px 5px #000;
 }
 
 .sidebarStyle {
     display: inline-block;
-    width: 15em;
-    top: 1em;
+    width: 25em;
+    top: 10em;
     left: 0;
     right: 0;
     margin: 5px;
-    background-color: #49606e;
+    background-color: #628194;
+    box-shadow: 1px 1px 3px #000;
     border-radius: 0.25em;
     color: #ffffff;
     font-size: 0.75em;
