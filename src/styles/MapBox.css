@@ -1,8 +1,7 @@
 .mapContainer {
-    flex-flow: row wrap;
-    display: inline-block;
-    height: 30em;
-    width: 60em;
+    margin-left: 5vw;
+    height: 60vh;
+    width: 50vw;
     border-radius: 0.25em;
     position: relative;
     box-shadow: 2px 2px 5px #000;
@@ -10,11 +9,9 @@
 
 .sidebarStyle {
     display: inline-block;
-    width: 25em;
-    top: 10em;
-    left: 0;
-    right: 0;
-    margin: 5px;
+    width: 24vw;
+    margin: 1vh;
+    margin-left: 8vw;
     background-color: #628194;
     box-shadow: 1px 1px 3px #000;
     border-radius: 0.25em;
