@@ -1,7 +1,10 @@
 import React, { Component, Fragment } from "react";
-import MapBox from '../mapboxAndReact';
+import MapBox from "../mapboxAndReact";
 
-import '../../styles/Main.css';
+import "../../styles/Main.css";
+
+const MAPBOXtoken =
+  "pk.eyJ1IjoiZGJ1cmJhY2gxOTgyIiwiYSI6ImNrNjhhbXNwbzAzMWczcG56azQ2anhlcmsifQ.oIeM3Zzm_nFsu-dbACDbZg";
 
 class Main extends Component {
   constructor(props) {
@@ -14,7 +17,9 @@ class Main extends Component {
       list: [],
       testList: [],
       location: "",
-      geoList: []
+      geoList: [],
+      lng: "",
+      lat: ""
     };
     this.onChange = this.onChange.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -43,6 +48,7 @@ class Main extends Component {
     let array5 = [this.state.testList[4].description] || "";
 
     const combinedResults = [array1, array2, array3, array4, array5] || "";
+
     const flattenedResults = [].concat(...combinedResults) || "";
     this.setState({
       list: flattenedResults
@@ -54,8 +60,6 @@ class Main extends Component {
       suggestion =>
         suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     );
-    console.log(filteredSuggestions);
-
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions,
@@ -107,23 +111,28 @@ class Main extends Component {
 
   handleGeoLocation = async event =>{
     event.preventDefault();
-    const token =
-      "pk.eyJ1IjoiZGJ1cmJhY2gxOTgyIiwiYSI6ImNrNjhhbXNwbzAzMWczcG56azQ2anhlcmsifQ.oIeM3Zzm_nFsu-dbACDbZg";
+    
     let selectedLocation = JSON.stringify(this.state.location);
-    const replacedLocation = selectedLocation.replace( /\s/g, '');
-    const joinedString = replacedLocation.split(',').join("%20");
-    console.log(joinedString);
+
+    const replacedLocation = selectedLocation.replace( /\s/g, "");
+
+    const joinedString = replacedLocation.split(",").join("%20");
     
     await fetch(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${joinedString}.json?access_token=${token}`
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${joinedString}.json?access_token=${MAPBOXtoken}`
     )
       .then(georesponse => georesponse.json())
       .then(georesponse => {
         this.setState({
-          geoList: georesponse.features[0].center.toString()
+          geoList: georesponse.features[0].center
         });
-      });
-      console.log(this.state.geoList);
+      });      
+    const lng = this.state.geoList[0].toString();
+    const lat = this.state.geoList[1].toString();
+      this.setState({
+        lng: lng,
+        lat: lat
+      })
   }
 
   render() {
@@ -161,7 +170,7 @@ class Main extends Component {
       } else {
         suggestionList = (
           <div className="no-suggestions">
-            <em>We don't have any suggestions, give it another try!</em>
+            <em>We don"t have any suggestions, give it another try!</em>
           </div>
         );
       }
@@ -169,10 +178,15 @@ class Main extends Component {
 
     return (
       <div className="MainWrapper">
-        <MapBox />
-        <br/>
+        <div className="MapBox">
+          <MapBox lng={this.state.lng} lat={this.state.lat}/>
+        </div>
         <div className="FormMain">
+          <h3>Search-A-Place</h3>
           <form autoComplete="off">
+            <input type="submit" value="Submit" onClick={this.handleGeoLocation} />
+            <input type="reset" value="Reset" onClick={this.handleReset} />
+            <br/>
             <div className="autocomplete">
               <Fragment>
                 <input
@@ -183,13 +197,11 @@ class Main extends Component {
                   value={userInput}
                   placeholder="Enter a location..."
                   recommendations={list}
-                  required="yes"
+                  required
                 />
                 {suggestionList}
               </Fragment>
             </div>
-            <input type="submit" value="Submit" onClick={this.handleGeoLocation}/>
-            <input type="reset" value="Reset" onClick={this.handleReset} />
           </form>
         </div>
       </div>
