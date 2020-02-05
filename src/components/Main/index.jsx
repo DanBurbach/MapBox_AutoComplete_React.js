@@ -183,6 +183,7 @@ class Main extends Component {
         </div>
         <div className="FormMain">
           <h3>Search-A-Place</h3>
+          <h5>Type slow, the APIs are thinking...</h5>
           <form autoComplete="off">
             <input type="submit" value="Submit" onClick={this.handleGeoLocation} />
             <input type="reset" value="Reset" onClick={this.handleReset} />
