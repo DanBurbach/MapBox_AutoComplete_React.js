@@ -1,72 +1,74 @@
 # AutoCompleteJS
-Coding exercise to create a reusable autocomplete component using JavaScript. This component will consume a remote web service that provides a list of Places. Each Place is comprised of an ID, name, description, tags, and a description match field which gives information about the substring in the description that matches the provided query. Upon selecting a suggestion, the state of the component should be updated to reflect the selected location.
 
+![AutoCompleteJS Main Page](https://github.com/DanBurbach/PersonalPortfolio_2.0/blob/master/src/assets/README_Intro_Screenshot.png?raw=true)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### __Created by Dan Burbach__
 
-In the project directory, you can run:
+#### February  2020__
 
-### `npm start`
+## __Description__
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+Coding exercise to create a reusable autocomplete component using 
+JavaScript. This component will consume a remote web service that 
+provides a list of Places. Each Place is comprised of an ID, name, 
+description, tags, and a description match field which gives information about the substring in the description that matches the provided query. Upon selecting a suggestion, the state of the component should be updated to reflect the selected location.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Furthermore... the location data is stored in state, followed by running it through a Geocoder which provides a latitude and longitude in its returned JSON. This is stripped out and added to the MapBox component, re-renders the map, and displays the searched for location.
+```
+## __Setup/Installation Requirements__
 
-### `npm test`
+  * Clone repository
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  * Open terminal
 
-### `npm run build`
+  * Run npm install
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  * npm run start
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+  * Open a browser: http://localhost:3000/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  * Enjoy!
 
-### `npm run eject`
+![AutoCompleteJS_Working_Example](http://g.recordit.co/nvkayG8Xrm.gif)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### __Technologies Used__
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+React.js, CSS3, HTML5, Javascript
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+[MapBox](https://www.mapbox.com/)
+Maps and location for developers. Precise location data and powerful developer tools to change the way we navigate the world. In this project it is used for both the display of the map via API call, AND provides Geomapping of the locations provided - which provides latitude and longitude coordinates.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## __Bugs__
+  - [ ] When typing too fast, the API libraries cannot keep up and errors are thrown
+  - [ ] If deleting what was typed and there isn't anything in the text box an error is thrown (ammended temporarily with the Reset Button)
+  - [ ] Some entered letters and returnes search recommendations do not have a map return and are found to throw an error.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## __Future Development__
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  - [ ] Smoother API Calls
+  - [ ] Alternative Map Source
+  - [ ] Mobile Friendly
+  - [ ] Dark Mode
+  - [ ] Larger Map
+ 
+### __Version__
 
-### Code Splitting
+Beta v1.0
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+## License(s)
+### Working Code is Licensed under the MIT license.
 
-### Analyzing the Bundle Size
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-### Making a Progressive Web App
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### Copyright 2020 Daniel Burbach
