@@ -12,16 +12,19 @@ class Main extends Component {
       showSuggestions: false,
       userInput: "",
       list: [],
-      testList: []
+      testList: [],
+      location: "",
+      geoList: []
     };
     this.onChange = this.onChange.bind(this);
     this.onClick = this.onClick.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
-
-    this.handleSaveLocation = this.handleSaveLocation.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+    this.handleGeoLocation = this.handleGeoLocation.bind(this);
   }
 
   onChange = async event => {
+    event.preventDefault();
     const userInput = event.currentTarget.value || "";
 
     await fetch(
@@ -62,11 +65,13 @@ class Main extends Component {
   };
 
   onClick = event => {
+    event.preventDefault();
     this.setState({
       activeSuggestion: 0,
       filteredSuggestions: [],
       showSuggestions: false,
-      userInput: event.currentTarget.innerText
+      userInput: event.currentTarget.innerText,
+      location: event.currentTarget.innerText
     });
   };
 
@@ -92,9 +97,33 @@ class Main extends Component {
     }
   };
 
-  handleSaveLocation(event) {
-    let userLocation = this.state.userInput;
-    this.setState({ location: userLocation});
+  handleReset = event => {
+    event.preventDefault();
+    this.setState({
+      userInput: "",
+      location: ""
+    });
+  };
+
+  handleGeoLocation = async event =>{
+    event.preventDefault();
+    const token =
+      "pk.eyJ1IjoiZGJ1cmJhY2gxOTgyIiwiYSI6ImNrNjhhbXNwbzAzMWczcG56azQ2anhlcmsifQ.oIeM3Zzm_nFsu-dbACDbZg";
+    let selectedLocation = JSON.stringify(this.state.location);
+    const replacedLocation = selectedLocation.replace( /\s/g, '');
+    const joinedString = replacedLocation.split(',').join("%20");
+    console.log(joinedString);
+    
+    await fetch(
+      `https://api.mapbox.com/geocoding/v5/mapbox.places/${joinedString}.json?access_token=${token}`
+    )
+      .then(georesponse => georesponse.json())
+      .then(georesponse => {
+        this.setState({
+          geoList: georesponse.features[0].center.toString()
+        });
+      });
+      console.log(this.state.geoList);
   }
 
   render() {
@@ -140,7 +169,8 @@ class Main extends Component {
 
     return (
       <div className="MainWrapper">
-        <h3>Type a city</h3>
+        <MapBox />
+        <br/>
         <div className="FormMain">
           <form autoComplete="off">
             <div className="autocomplete">
@@ -154,14 +184,14 @@ class Main extends Component {
                   placeholder="Enter a location..."
                   recommendations={list}
                   required="yes"
-                  />
+                />
                 {suggestionList}
               </Fragment>
             </div>
-            <input type="submit" />
+            <input type="submit" value="Submit" onClick={this.handleGeoLocation}/>
+            <input type="reset" value="Reset" onClick={this.handleReset} />
           </form>
         </div>
-        <MapBox/>
       </div>
     );
   }
