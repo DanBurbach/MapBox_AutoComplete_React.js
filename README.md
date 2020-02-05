@@ -34,6 +34,7 @@ and - much like before - turned into a JSON, stripped for latitude and longitude
 a mapping API.
 * The mapping API takes the coordinates and processes them, returning a new map and location on 
 componentDidUpdate. Rendering in a map, and displaying coordinates for the user.
+![Dataflow_Whiteboard](https://github.com/DanBurbach/AutoCompleteJS/blob/master/src/assets/AutoCompleteJS_Whiteboarding.jpg?raw=true)
 
 ## __Setup/Installation Requirements__
 
