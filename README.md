@@ -1,6 +1,6 @@
 # AutoCompleteJS
 
-![AutoCompleteJS Main Page](https://github.com/DanBurbach/PersonalPortfolio_2.0/blob/master/src/assets/README_Intro_Screenshot.png?raw=true)
+![AutoCompleteJS Main Page](https://github.com/DanBurbach/AutoCompleteJS/blob/master/src/assets/AutoCompleteJS_Main.png?raw=true)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -11,12 +11,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## __Description__
 
 ```
-Coding exercise to create a reusable autocomplete component using 
-JavaScript. This component will consume a remote web service that 
-provides a list of Places. Each Place is comprised of an ID, name, 
-description, tags, and a description match field which gives information about the substring in the description that matches the provided query. Upon selecting a suggestion, the state of the component should be updated to reflect the selected location.
+Coding exercise to create a reusable autocomplete component using JavaScript. This component will consume a 
+remote web service that provides a list of Places. Each Place is comprised of an ID, name, description, tags, 
+and a description match field which gives information about the substring in the description that matches the 
+provided query. Upon selecting a suggestion, the state of the component should be updated to reflect the 
+selected location.
 
-Furthermore... the location data is stored in state, followed by running it through a Geocoder which provides a latitude and longitude in its returned JSON. This is stripped out and added to the MapBox component, re-renders the map, and displays the searched for location.
+Furthermore... the location data is stored in state, followed by running it through a Geocoder which provides a 
+latitude and longitude in its returned JSON. This is stripped out and added to the MapBox component, re-renders 
+the map, and displays the searched for location.
 ```
 ## __Setup/Installation Requirements__
 
