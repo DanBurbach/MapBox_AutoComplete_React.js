@@ -1,27 +1,43 @@
 .MainWrapper {
     display: flex;
     flex-flow: row wrap;
-    align-items: center;
     z-index: 10;
+    padding-top: 8vh;
 }
 
 .autocomplete {
     position: absolute;
     width: 20em;
     z-index: 10;
-    padding: 2vh;
-    right: 12vw;
+    padding-top: 4vh;
+    right: 10.75vw;
 }
 
 h3 {
+    position: relative;
+    left: 3vw;
+    padding: 0;
+    color: #e0dfdc;
+    background-color: #374954;
+    font-size: 3em;
+    letter-spacing: 0.1em;
+    text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0 #2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e, 0 10px 0 #1c1c1c, 0 11px 0 #1a1a1a, 0 12px 0 #181818, 0 13px 0 #161616, 0 14px 0 #141414, 0 15px 0 #121212, 0 22px 30px rgba(0, 0, 0, 0.9);
+}
+
+
+h5 {
+    position: relative;
+    left: 3vw;
+    opacity: 0.5;
     padding: 0;
     color: #fff;
     text-shadow: 1px 1px 3px #000;
+    text-align: center;
 }
 
 input[type=reset] {
     position: relative;
-    right: -7vw;
+    right: -4vw;
     padding-left: 3em;
     padding-right: 3em;
     background-color: #FF3030;
@@ -46,10 +62,10 @@ input[type=reset]:active {
 
 input[type=submit] {
     position: relative;
-    right: -6vw;
+    right: -2vw;
     padding-left: 3em;
     padding-right: 3em;
-    background-color: #6BBE92;
+    background-color: rgb(33, 199, 111);
     color: #fff;
     cursor: pointer;
     border-radius: 0.25em;
@@ -59,11 +75,11 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: rgb(76, 204, 136)
+    background-color: rgb(2, 161, 77);
 }
 
 input[type=submit]:active {
-    background-color: #6BBE92;
+    background-color: rgb(2, 161, 77);
     box-shadow: 1px 1px 5px #000;
     transform: translateY(3px);
     outline: 0;
