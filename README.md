@@ -44,6 +44,8 @@ componentDidUpdate. Rendering in a map, and displaying coordinates for the user.
 
   * Run npm install
 
+  * Include an API Key from MapBox (included temporarily in this project - will be removed)
+
   * npm run start
 
   * Open a browser: http://localhost:3000/
