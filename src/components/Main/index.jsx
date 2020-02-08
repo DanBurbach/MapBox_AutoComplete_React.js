@@ -41,6 +41,7 @@ class Main extends Component {
           testList: response.predictions.concat([response])
         });
       });
+
     let array1 = [this.state.testList[0].description] || "";
     let array2 = [this.state.testList[1].description] || "";
     let array3 = [this.state.testList[2].description] || "";
