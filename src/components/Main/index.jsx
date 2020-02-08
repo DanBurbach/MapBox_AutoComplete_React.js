@@ -33,7 +33,7 @@ class Main extends Component {
     const userInput = event.currentTarget.value || "";
 
     await fetch(
-      `https://coding-challenge.echoandapex.com/locations?q=${userInput}`
+      `https://coding-challenge.echoandapex.com/locations?q=${userInput.toUpperCase()}`
     )
       .then(response => response.json())
       .then(response => {
@@ -111,11 +111,8 @@ class Main extends Component {
 
   handleGeoLocation = async event =>{
     event.preventDefault();
-    
-    let selectedLocation = JSON.stringify(this.state.location);
-
+    const selectedLocation = JSON.stringify(this.state.location);
     const replacedLocation = selectedLocation.replace( /\s/g, "");
-
     const joinedString = replacedLocation.split(",").join("%20");
     
     await fetch(
