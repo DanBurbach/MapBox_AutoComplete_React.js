@@ -57,7 +57,7 @@ componentDidUpdate. Rendering in a map, and displaying coordinates for the user.
  
 ### __Technologies Used__
  
-React.js, CSS3, HTML5, Javascript, MapBox, and a provided coding challenge API Location Library
+React.js, CSS3, HTML5, Javascript, Postman, MapBox, and a provided coding challenge API Location Library
  
 -[MapBox](https://www.mapbox.com/)-
 Maps and location for developers. Precise location data and powerful developer tools to change the way we navigate the world. In this project it is used for both the display of the map via API call, AND provides Geo Mapping of the locations provided - which provides latitude and longitude coordinates.
