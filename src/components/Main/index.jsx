@@ -41,22 +41,24 @@ class Main extends Component {
           testList: response.predictions.concat([response])
         });
       });
+      
+    const arrayList = this.state.testList;
+    let listArray = [];
 
-    let array1 = [this.state.testList[0].description] || "";
-    let array2 = [this.state.testList[1].description] || "";
-    let array3 = [this.state.testList[2].description] || "";
-    let array4 = [this.state.testList[3].description] || "";
-    let array5 = [this.state.testList[4].description] || "";
-
-    const combinedResults = [array1, array2, array3, array4, array5] || "";
-
-    const flattenedResults = [].concat(...combinedResults) || "";
+    for (var i = 0; i < arrayList.length; i++){
+      if(arrayList.hasOwnProperty(i)){
+        listArray.push(arrayList[i].description);
+      }
+    }
+    
+    let filteredArrayList = listArray.filter(function(el) {
+      return el != null;
+    })
     this.setState({
-      list: flattenedResults
+      list: filteredArrayList
     });
 
     const recommendations = this.state.list;
-
     const filteredSuggestions = recommendations.filter(
       suggestion =>
         suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
@@ -110,7 +112,7 @@ class Main extends Component {
     });
   };
 
-  handleGeoLocation = async event =>{
+  handleGeoLocation = async event => {
     event.preventDefault();
     const selectedLocation = JSON.stringify(this.state.location);
     const replacedLocation = selectedLocation.replace( /\s/g, "");
@@ -124,7 +126,10 @@ class Main extends Component {
         this.setState({
           geoList: georesponse.features[0].center
         });
-      });      
+      });
+      console.log(this.state.geoList);
+      
+
     const lng = this.state.geoList[0].toString();
     const lat = this.state.geoList[1].toString();
       this.setState({

@@ -7,7 +7,6 @@ mapboxgl.accessToken =
   "pk.eyJ1IjoiZGJ1cmJhY2gxOTgyIiwiYSI6ImNrNjhhbXNwbzAzMWczcG56azQ2anhlcmsifQ.oIeM3Zzm_nFsu-dbACDbZg";
 
 
-
 class MapBox extends Component {
   constructor(props) {
     super(props);
