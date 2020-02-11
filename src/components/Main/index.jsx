@@ -108,7 +108,9 @@ class Main extends Component {
     event.preventDefault();
     this.setState({
       userInput: "",
-      location: ""
+      location: "",
+      lng: -122.675,
+      lat: 45.5051
     });
   };
 
