@@ -113,29 +113,32 @@ class Main extends Component {
   };
 
   handleGeoLocation = async event => {
-    event.preventDefault();
-    const selectedLocation = JSON.stringify(this.state.location);
-    const replacedLocation = selectedLocation.replace( /\s/g, "");
-    const joinedString = replacedLocation.split(",").join("%20");
-    
-    await fetch(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${joinedString}.json?access_token=${MAPBOXtoken}`
-    )
-      .then(georesponse => georesponse.json())
-      .then(georesponse => {
-        this.setState({
-          geoList: georesponse.features[0].center
-        });
-      });
-      console.log(this.state.geoList);
+    try {
+      event.preventDefault();
+      const selectedLocation = JSON.stringify(this.state.location);
+      const replacedLocation = selectedLocation.replace( /\s/g, "");
+      const joinedString = replacedLocation.split(",").join("%20");
       
+      await fetch(
+        `https://api.mapbox.com/geocoding/v5/mapbox.places/${joinedString}.json?access_token=${MAPBOXtoken}`
+      )
+        .then(georesponse => georesponse.json())
+        .then(georesponse => {
+          this.setState({
+            geoList: georesponse.features[0].center
+          });
+        });
+        
 
-    const lng = this.state.geoList[0].toString();
-    const lat = this.state.geoList[1].toString();
-      this.setState({
-        lng: lng,
-        lat: lat
-      })
+      const lng = this.state.geoList[0].toString();
+      const lat = this.state.geoList[1].toString();
+        this.setState({
+          lng: lng,
+          lat: lat
+        })
+    } catch(err) {
+      alert('Nothing found in the maps, please try again!')
+    }
   }
 
   render() {
