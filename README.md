@@ -1,4 +1,4 @@
-# AutoCompleteJS Project
+# MapBox AutoComplete React.js Project
  
 ![AutoCompleteJS Main Page](https://github.com/DanBurbach/AutoCompleteJS/blob/master/src/assets/AutoCompleteJS_Main.png?raw=true)
  
@@ -12,13 +12,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ```
 Coding exercise to create a reusable autocomplete component using JavaScript. This component will consume
-a remote web service that provides a list of Places. Each Place is comprised of an ID, name, description,
+a remote web service (API to JSON) that provides a list of Places. Each Place is comprised of an ID, name, description,
 tags, and a description match field which gives information about the substring in the description that
 matches the provided query. Upon selecting a suggestion, the state of the component should be updated to
 reflect the selected location.
  
-Furthermore... the location data is stored in state, followed by running it through a Geocoder which
-provides a latitude and longitude in its returned JSON. This is stripped out and added to the MapBox
+Furthermore... the location data is stored in state, followed by running it through Mapbox Geocoder which
+provides a latitude and longitude in its returned JSON (via secondary API). This is stripped out and added to the MapBox
 component, re-renders the map, and displays the searched for location.
 ```
 
@@ -64,8 +64,9 @@ Maps and location for developers. Precise location data and powerful developer t
  
 ## __Bugs__
  - [ ] When typing too fast, the API libraries cannot keep up and errors are thrown.
- - [ ] If deleting what was typed and there isn't anything in the text box an error is thrown
+ - [X] If deleting what was typed and there isn't anything in the text box an error is thrown
  (amended temporarily with the Reset Button).
+ (Fix: Display pop-up error)
  - [X] Some entered letters and returns search recommendations do not have a map return and are
  found to throw an error.
  (Fix: Update API call to capitalize the entire requested data. Example: "egypt" would return an error, but "Egypt" wouldn't)
@@ -78,6 +79,7 @@ Maps and location for developers. Precise location data and powerful developer t
  - [ ] Mobile Friendly
  - [ ] Dark Mode
  - [ ] Larger Map
+ 
 ### __Version__
  
 Beta v1.0
