@@ -4,8 +4,7 @@ import mapboxgl from "mapbox-gl";
 import '../../styles/MapBox.css';
 
 mapboxgl.accessToken =
-  "pk.eyJ1IjoiZGJ1cmJhY2gxOTgyIiwiYSI6ImNrNjhhbXNwbzAzMWczcG56azQ2anhlcmsifQ.oIeM3Zzm_nFsu-dbACDbZg";
-
+  MAPBOX_ACCESS_TOKEN_HERE
 
 class MapBox extends Component {
   constructor(props) {
