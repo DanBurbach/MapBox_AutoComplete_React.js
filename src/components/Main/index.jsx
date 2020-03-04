@@ -4,7 +4,7 @@ import MapBox from "../mapboxAndReact";
 import "../../styles/Main.css";
 
 const MAPBOXtoken =
-  "pk.eyJ1IjoiZGJ1cmJhY2gxOTgyIiwiYSI6ImNrNjhhbXNwbzAzMWczcG56azQ2anhlcmsifQ.oIeM3Zzm_nFsu-dbACDbZg";
+  MAPBOX_TOKEN_HERE;
 
 class Main extends Component {
   constructor(props) {
